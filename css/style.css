@@ -79,6 +79,8 @@ img {
     width: 370px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .contect-card {
@@ -155,4 +157,62 @@ img {
 .app-content {
     flex-grow: 1;
     background-image: url(../img/mine.jpg);
+}
+
+.body_app-content{
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--light-blue);
+    height: 100%;
+}
+
+.message-card {
+    flex-grow: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 50px 0;
+    gap: 120px;
+}
+
+.message-bar {
+    width: 100%;
+    height: 35px;
+    padding-left: 10px;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+}
+
+.message-bar-icon{
+    margin: 0 15px;
+    color: var(--dark-grey);
+}
+
+.send-msg{
+    background-color: var(--green);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.receive-msg{
+    background-color: var(--light);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.text-msg{
+    margin-right: 30px;
+}
+
+.time-msg{
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    font-size: 11px;
+    color: var(--grey);
 }
