@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/531bff1fdd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <div id="app">
@@ -17,9 +18,9 @@
                         <li>
                             <div class="contect-card bg-light-grey">
                                 <figure class="contect-img">
-                                    <img src="./img/avatar_1.jpg" alt="">
+                                    <img src="./img/avatar_io.jpg" alt="">
                                 </figure>
-                                <h6 class="contect-info">Gianluca</h6>
+                                <h6 class="contect-info">Sofia</h6>
                                 <span class="font-grey">
                                     <i class="fa-solid fa-message"></i>
                                     <i class="fa-solid fa-circle-notch space-icon"></i>
@@ -48,13 +49,13 @@
                     <!-- inizio lista contatti -->
                     <div class="contact-list">
                         <ul>
-                            <li>
+                            <li v-for="(info, index) in contacts">
                                 <div class="contect-card divider">
                                     <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
+                                        <img :src="info.avatar" alt="">
                                     </figure>
                                     <div class="contect-info">
-                                        <h6>Gianluca</h6>
+                                        <h6>{{info.name}}</h6>
                                         <p class="bottom-text">Ultimo messaggio inviato</p>
                                     </div>
                                     <span class="bottom-text font-grey">
@@ -62,105 +63,6 @@
                                     </span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="contect-card divider">
-                                    <figure class="contect-img">
-                                        <img src="./img/avatar_1.jpg" alt="">
-                                    </figure>
-                                    <div class="contect-info">
-                                        <h6>Gianluca</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
-                                    </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
-                                    </span>
-                                </div>
-                            </li>
-                            
                         </ul>
                     </div>
                 </div>
@@ -171,7 +73,10 @@
                                 <figure class="contect-img">
                                     <img src="./img/avatar_1.jpg" alt="">
                                 </figure>
-                                <h6 class="contect-info">Gianluca</h6>
+                                <div class="contect-info">
+                                    <h6>Michele</h6>
+                                    <p class="bottom-text">Ultimo accesso oggi alle 12:00</p>
+                                </div>
                                 <span class="font-grey">
                                     <i class="fa-solid fa-search"></i>
                                     <i class="fa-solid fa-paperclip space-icon"></i>
