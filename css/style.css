@@ -3,3 +3,36 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.container {
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+#app {
+    display: flex;
+    height: 100vh;
+    background-color: bisque;
+    padding: 20px 0;
+}
+
+/* .asidebar,
+.app-content {
+    border: 2px solid black;
+} */
+
+.app-body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.asidebar {
+    width: 200px;
+    background-color: white;
+}
+
+.app-content {
+    flex-grow: 1;
+    background-image: url(../img/mine.jpg);
+}
