@@ -27,7 +27,13 @@ img {
 #app {
     display: flex;
     height: 100vh;
-    background-color: bisque;
+    /* background-color: var(--bg-grey); */
+    background: linear-gradient(
+    to bottom,
+    var(--dark-green) 0%,
+    var(--dark-green) 15%,
+    var(--bg-grey) 15%,
+    var(--bg-grey) 100%);
     padding: 20px 0;
 }
 
@@ -60,6 +66,7 @@ img {
     --green: #D7F9BC;
     --light-blue: #8EDAFD;
     --dark-green: #019687;
+    --bg-grey:#DBDAD5;
 }
 
 
