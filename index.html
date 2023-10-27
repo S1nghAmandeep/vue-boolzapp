@@ -107,7 +107,8 @@
                                     <i class="fa-regular fa-face-smile"></i>
                                 </div>
                                 <div class="card-search-bar contect-info">
-                                    <input class="message-bar" type="text" placeholder="Scrivi un messaggio">
+                                    <input class="message-bar" type="text" placeholder="Scrivi un messaggio"
+                                    v-model="typeMsg" @keyup.enter="addMessage()">
                                 </div>
                                 <span class="message-bar-icon">
                                     <i class="fa-solid fa-microphone"></i>
