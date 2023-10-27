@@ -12,11 +12,12 @@
 <body>
     <div id="app">
             <div class="app-body container">
-                <!-- inizio sezione asidebar -->
-                <div class="asidebar">
+
+                                              <!-- inizio sezione sidebar -->
+                <div class="sidebar">
                     <ul>
                         <li>
-                            <div class="contect-card bg-light-grey">
+                            <div class="contect-card align-center bg-light-grey">
                                 <figure class="contect-img">
                                     <img src="./img/avatar_io.jpg" alt="">
                                 </figure>
@@ -41,16 +42,22 @@
                         </li>
                         <li>
                             <div class="card-search-bar">
-                                <input class="search-bar" type="text" placeholder="Cerca o inizia una nuova chat">
+                                <input class="search-bar" type="text" 
+                                placeholder="Cerca o inizia una nuova chat"
+                                v-model="typeName" @keyup="isNamePresent()">
                                 <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
                             </div>
                         </li>
                     </ul>
-                    <!-- inizio lista contatti -->
+
+                                                <!-- inizio lista contatti -->
+                                                
                     <div class="contact-list">
                         <ul>
-                            <li v-for="(info, index) in contacts">
-                                <div class="contect-card divider">
+                            <li v-for="(info, index) in contacts" 
+                            @click="autoIndex = index"
+                            :class="{'active': index === autoIndex}">
+                                <div class="contect-card align-start divider">
                                     <figure class="contect-img">
                                         <img :src="info.avatar" alt="">
                                     </figure>
@@ -66,15 +73,17 @@
                         </ul>
                     </div>
                 </div>
+
+                                                <!-- inizio del contenuto dei messaggi -->
                 <div class="app-content">
                     <div class="body_app-content">
                         <div>
-                            <div class="contect-card bg-light-grey">
+                            <div class="contect-card align-center bg-light-grey">
                                 <figure class="contect-img">
-                                    <img src="./img/avatar_1.jpg" alt="">
+                                    <img :src="contacts[autoIndex].avatar" alt="">
                                 </figure>
                                 <div class="contect-info">
-                                    <h6>Michele</h6>
+                                    <h6>{{contacts[autoIndex].name}}</h6>
                                     <p class="bottom-text">Ultimo accesso oggi alle 12:00</p>
                                 </div>
                                 <span class="font-grey">
@@ -85,33 +94,15 @@
                             </div>
                         </div>
                         <div class="message-card">
-                            <div class="send-card">
-                                <ul>
-                                    <li class="send-msg">
-                                        <p class="text-msg">Ciao come stai?</p>
-                                        <span class="time-msg">12:00</span>
-                                    </li>
-                                    <li class="send-msg">
-                                        <p class="text-msg">Come è andato il viaggio?</p>
-                                        <span class="time-msg">12:00</span>
-                                    </li>
+                                <ul class="chat">
+                                    <li v-for="(msg, index) in contacts[autoIndex].messages" class="message sent"
+                                    :class="msg.status === 'received' ? 'received' : ''">
+                                        <p class="text-msg">{{msg.message}}</p>
+                                        <span class="time-msg">12:00</span></li>
                                 </ul>
                             </div>
-                            <div class="receive-card">
-                                <ul>
-                                    <li class="receive-msg">
-                                        <p class="text-msg">Sto bene grazie</p>
-                                        <span class="time-msg">12:00</span>
-                                    </li>
-                                    <li class="receive-msg">
-                                        <p class="text-msg">Il viaggio è stato bello</p>
-                                        <span class="time-msg">12:00</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="contect-card bg-light-grey">
+
+                            <div class="contect-card align-center bg-light-grey">
                                 <div class="message-bar-icon">
                                     <i class="fa-regular fa-face-smile"></i>
                                 </div>
