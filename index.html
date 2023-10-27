@@ -55,7 +55,7 @@
                     <div class="contact-list">
                         <ul>
                             <li v-for="(info, index) in contacts" 
-                            @click="autoIndex = index"
+                            @click="autoIndex = index" v-show="info.visible"
                             :class="{'active': index === autoIndex}">
                                 <div class="contect-card align-start divider">
                                     <figure class="contect-img">
@@ -95,8 +95,8 @@
                         </div>
                         <div class="message-card">
                                 <ul class="chat">
-                                    <li v-for="(msg, index) in contacts[autoIndex].messages" class="message sent"
-                                    :class="msg.status === 'received' ? 'received' : ''">
+                                    <li v-for="(msg, index) in contacts[autoIndex].messages" :key="index"
+                                    class="message sent":class="msg.status === 'received' ? 'received' : ''">
                                         <p class="text-msg">{{msg.message}}</p>
                                         <span class="time-msg">12:00</span></li>
                                 </ul>
