@@ -9,6 +9,7 @@ createApp({
         return {
             autoIndex: 0,
             typeName: '',
+            typeMsg: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -175,7 +176,24 @@ createApp({
         }
     },
     methods: {
-       
+       addMessage(){
+        const sendMsg = this.contacts[this.autoIndex].messages.push({
+            date: '10/01/2020 15:51:00',
+            message: this.typeMsg,
+            status: 'sent',
+        });
+
+        this.typeMsg = '';
+
+        setTimeout(() => {
+            this.contacts[this.autoIndex].messages.push({
+                date: '10/01/2020 15:51:00',
+                message: 'Ok',
+                status: 'received',
+            })
+        }, "1000");
+       },
+
     },
     mounted(){
         console.log('ok')
