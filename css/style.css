@@ -27,12 +27,11 @@ img {
 #app {
     display: flex;
     height: 100vh;
-    /* background-color: var(--bg-grey); */
     background: linear-gradient(
     to bottom,
     var(--dark-green) 0%,
-    var(--dark-green) 15%,
-    var(--bg-grey) 15%,
+    var(--dark-green) 100px,
+    var(--bg-grey) 100px,
     var(--bg-grey) 100%);
     padding: 20px 0;
 }
@@ -54,6 +53,18 @@ img {
     margin: 0 10px;
 }
 
+.align-start {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.active {
+    background-color: var(--bg-grey);
+}
+
 /* palette colori */
 
 :root {
@@ -70,30 +81,25 @@ img {
 }
 
 
-/* .asidebar,
-.app-content {
-    border: 2px solid black;
-} */
-
 .app-body {
     display: flex;
     flex-grow: 1;
     overflow: hidden;
 }
 
-/* inizio sezione asidebar */
-.asidebar {
+/* inizio sezione sidebar */
+.sidebar {
     width: 370px;
     background-color: rgb(255, 255, 255);
     overflow: hidden;
     display: flex;
+    flex-shrink: 0;
     flex-direction: column;
 }
 
 .contect-card {
     display: flex;
     padding: 10px;
-    align-items: center;
 }
 
 .contect-img {
@@ -150,6 +156,7 @@ img {
 
 .contact-list {
     overflow: auto;
+    flex-grow: 1;
 }
 
 .divider {
@@ -162,7 +169,7 @@ img {
 
 /* inizio sezione app-content */
 .app-content {
-    flex-grow: 1;
+    width: 700px;
     background-image: url(../img/mine.jpg);
 }
 
@@ -176,11 +183,43 @@ img {
 .message-card {
     flex-grow: 1;
     overflow: auto;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding: 50px 0;
-    gap: 120px;
+}
+
+.chat {
+	flex-grow: 1;
+	padding: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.message {
+	border-radius: 10px;
+	padding: 10px 20px;
+	max-width: 70%;
+    position: relative;
+}
+
+.message.sent {
+	background-color: var(--green);
+	align-self: flex-end;
+}
+
+.message.received {
+	background-color: var(--light);
+	align-self: flex-start;
+}
+
+.text-msg{
+    margin-right: 30px;
+}
+
+.time-msg{
+    position: absolute;
+    right: 5px;
+    bottom: 0;
+    font-size: 11px;
+    color: var(--grey);
 }
 
 .message-bar {
@@ -194,32 +233,4 @@ img {
 .message-bar-icon{
     margin: 0 15px;
     color: var(--dark-grey);
-}
-
-.send-msg{
-    background-color: var(--green);
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.receive-msg{
-    background-color: var(--light);
-    padding: 10px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.text-msg{
-    margin-right: 30px;
-}
-
-.time-msg{
-    position: absolute;
-    right: 5px;
-    bottom: 0;
-    font-size: 11px;
-    color: var(--grey);
 }
