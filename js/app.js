@@ -1,8 +1,14 @@
+ // isNamePresent(){
+        //     this.contacts.name.includes(this.typeName);
+        // }
+
 const { createApp } = Vue;
 
 createApp({
     data(){
         return {
+            autoIndex: 0,
+            typeName: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -169,7 +175,7 @@ createApp({
         }
     },
     methods: {
-
+       
     },
     mounted(){
         console.log('ok')
