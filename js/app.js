@@ -1,7 +1,3 @@
- // isNamePresent(){
-        //     this.contacts.name.includes(this.typeName);
-        // }
-
 const { createApp } = Vue;
 
 createApp({
@@ -184,15 +180,26 @@ createApp({
         });
 
         this.typeMsg = '';
-
+        
         setTimeout(() => {
             this.contacts[this.autoIndex].messages.push({
                 date: '10/01/2020 15:51:00',
                 message: 'Ok',
                 status: 'received',
-            })
-        }, "1000");
-       },
+                })
+            }, "1000");
+        },
+
+        isNamePresent(){
+            this.typeName.toLowerCase()
+            this.contacts.forEach(element => {
+                if (element.name.toLowerCase().includes(this.typeName)) {
+                    element.visible = true;
+                } else {
+                    element.visible = false;
+                }
+            });
+        }
 
     },
     mounted(){
