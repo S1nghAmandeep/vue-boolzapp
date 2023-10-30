@@ -59,15 +59,15 @@
                             @click="autoIndex = index" v-show="info.visible"
                             :class="{'active': index === autoIndex}">
                                 <div class="contect-card align-start divider">
-                                    <figure class="contect-img">
+                                    <figure class="not-shrink contect-img">
                                         <img :src="info.avatar" alt="">
                                     </figure>
                                     <div class="contect-info">
                                         <h6>{{info.name}}</h6>
-                                        <p class="bottom-text">Ultimo messaggio inviato</p>
+                                        <p class="bottom-text">{{lastMsg(info.messages)}}</p>
                                     </div>
-                                    <span class="bottom-text font-grey">
-                                        12:00
+                                    <span class="bottom-text font-grey not-shrink">
+                                        {{chatTime(info.messages)}}
                                     </span>
                                 </div>
                             </li>
@@ -85,7 +85,7 @@
                                 </figure>
                                 <div class="contect-info">
                                     <h6>{{contacts[autoIndex].name}}</h6>
-                                    <p class="bottom-text">Ultimo accesso oggi alle 12:00</p>
+                                    <p class="bottom-text">Ultimo accesso oggi alle {{activeChat(contacts[autoIndex].messages)}}</p>
                                 </div>
                                 <span class="font-grey">
                                     <i class="fa-solid fa-search"></i>
