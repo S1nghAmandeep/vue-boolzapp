@@ -211,8 +211,33 @@ createApp({
         },
 
         deleteMsg(msgIndex){
-            this.contacts[this.autoIndex].messages.splice(msgIndex, 1)
+            this.contacts[this.autoIndex].messages.splice(msgIndex, 1);
             this.activeDropdown = '';
+        },
+
+        lastMsg(arrayMsgs){
+            let msg = '';
+            for (let index = 0; index < arrayMsgs.length; index++) {
+                const element = arrayMsgs[index];
+                msg = element.message;
+            }
+            return msg;
+        },
+
+        chatTime(arrayMsgs){
+            let chat  = '';
+            arrayMsgs.forEach(element => {
+                chat = element.date;
+            });
+            return chat;
+        },
+
+        activeChat(arrayContacts){
+            let activeTime = '';
+            arrayContacts.forEach(element => {
+                activeTime = element.date
+            })
+            return activeTime;
         }
 
     },
