@@ -217,14 +217,15 @@ createApp({
 
         lastMsg(arrayMsgs){
             let msg = '';
-
+            
             if(arrayMsgs.length > 0) {
-         
+                const element = arrayMsgs.at(-1)
+                msg = element.message;
+                return msg;
+            } else {
+                msg = '';
             }
-            const lastIndex = arrayMsgs.length - 1;
-            const lastElement = arrayMsgs[lastIndex];
-            msg = lastElement.message;
-            return msg;
+            
         },
 
         chatTime(arrayMsgs){
