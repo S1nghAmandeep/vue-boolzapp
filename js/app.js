@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
     data(){
         return {
+            activeDropdown: '',
             autoIndex: 0,
             typeName: '',
             typeMsg: '',
@@ -199,6 +200,15 @@ createApp({
                     element.visible = false;
                 }
             });
+        },
+
+        showDropdown(indexMsg){
+            this.activeDropdown = indexMsg;
+        },
+
+        deleteMsg(msgIndex){
+            this.contacts[this.autoIndex].messages.splice(msgIndex, 1)
+            this.activeDropdown = '';
         }
 
     },
