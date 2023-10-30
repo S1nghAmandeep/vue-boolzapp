@@ -65,6 +65,10 @@ img {
     background-color: var(--bg-grey);
 }
 
+.not-shrink {
+    flex-shrink: 0;
+}
+
 /* palette colori */
 
 :root {
@@ -104,6 +108,7 @@ img {
 
 .contect-img {
     width: 30px;
+    align-self: center;
     margin-right: 10px;
 }
 
