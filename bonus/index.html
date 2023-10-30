@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/531bff1fdd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.3/build/global/luxon.min.js"></script>
+</head>
+<body>
+    <div id="app">
+            <div class="app-body container">
+
+                                              <!-- inizio sezione sidebar -->
+                <div class="sidebar">
+                    <ul>
+                        <li>
+                            <div class="contect-card align-center bg-light-grey">
+                                <figure class="contect-img">
+                                    <img src="./img/avatar_io.jpg" alt="">
+                                </figure>
+                                <h6 class="contect-info">Sofia</h6>
+                                <span class="font-grey">
+                                    <i class="fa-solid fa-message"></i>
+                                    <i class="fa-solid fa-circle-notch space-icon"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contect-card bg-blue">
+                                <div class="bell-icon">
+                                    <span ><i class="fa-solid fa-bell-slash"></i></span>
+                                </div>
+                                <div>
+                                    <h6 class="contect-info">Ricevi notifiche di nuovi messaggi</h6>
+                                    <span class="bottom-text"><a href="#">Attiva notifiche desktop</a></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card-search-bar">
+                                <input class="search-bar" type="text" 
+                                placeholder="Cerca o inizia una nuova chat"
+                                v-model="typeName" @keyup="isNamePresent()">
+                                <span class="icon-search"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            </div>
+                        </li>
+                    </ul>
+
+                                                <!-- inizio lista contatti -->
+                                                
+                    <div class="contact-list">
+                        <ul>
+                            <li v-for="(info, index) in contacts" 
+                            @click="autoIndex = index" v-show="info.visible"
+                            :class="{'active': index === autoIndex}">
+                                <div class="contect-card align-start divider">
+                                    <figure class="contect-img">
+                                        <img :src="info.avatar" alt="">
+                                    </figure>
+                                    <div class="contect-info">
+                                        <h6>{{info.name}}</h6>
+                                        <p class="bottom-text">Ultimo messaggio inviato</p>
+                                    </div>
+                                    <span class="bottom-text font-grey">
+                                        12:00
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                                                <!-- inizio del contenuto dei messaggi -->
+                <div class="app-content">
+                    <div class="body_app-content">
+                        <div>
+                            <div class="contect-card align-center bg-light-grey">
+                                <figure class="contect-img">
+                                    <img :src="contacts[autoIndex].avatar" alt="">
+                                </figure>
+                                <div class="contect-info">
+                                    <h6>{{contacts[autoIndex].name}}</h6>
+                                    <p class="bottom-text">Ultimo accesso oggi alle 12:00</p>
+                                </div>
+                                <span class="font-grey">
+                                    <i class="fa-solid fa-search"></i>
+                                    <i class="fa-solid fa-paperclip space-icon"></i>
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div @mouseleave="activeDropdown = ''" class="message-card">
+                                <ul class="chat">
+                                    <li @click="showDropdown(index)"
+                                    v-for="(msg, index) in contacts[autoIndex].messages" :key="index"
+                                    class="message sent":class="msg.status === 'received' ? 'received' : ''">
+                                        <p class="text-msg">{{msg.message}}</p>
+                                        <span class="time-msg">{{msg.date}}</span>
+                                        <div class="dropdown" :class="{'dropdown-active': index === activeDropdown}">
+                                            <p class="dropdown-item">Message info</p>
+                                            <p class="dropdown-item" 
+                                            @click.stop="deleteMsg(index)">
+                                                Delete message
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="contect-card align-center bg-light-grey">
+                                <div class="message-bar-icon">
+                                    <i class="fa-regular fa-face-smile"></i>
+                                </div>
+                                <div class="card-search-bar contect-info">
+                                    <input class="message-bar" type="text" placeholder="Scrivi un messaggio"
+                                    v-model="typeMsg" @keyup.enter="addMessage()">
+                                </div>
+                                <span class="message-bar-icon">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
