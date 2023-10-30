@@ -217,10 +217,13 @@ createApp({
 
         lastMsg(arrayMsgs){
             let msg = '';
-            for (let index = 0; index < arrayMsgs.length; index++) {
-                const element = arrayMsgs[index];
-                msg = element.message;
+
+            if(arrayMsgs.length > 0) {
+         
             }
+            const lastIndex = arrayMsgs.length - 1;
+            const lastElement = arrayMsgs[lastIndex];
+            msg = lastElement.message;
             return msg;
         },
 
