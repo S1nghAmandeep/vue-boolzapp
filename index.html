@@ -93,12 +93,21 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="message-card">
+                        <div @mouseleave="activeDropdown = ''" class="message-card">
                                 <ul class="chat">
-                                    <li v-for="(msg, index) in contacts[autoIndex].messages" :key="index"
+                                    <li @click="showDropdown(index)"
+                                    v-for="(msg, index) in contacts[autoIndex].messages" :key="index"
                                     class="message sent":class="msg.status === 'received' ? 'received' : ''">
                                         <p class="text-msg">{{msg.message}}</p>
-                                        <span class="time-msg">12:00</span></li>
+                                        <span class="time-msg">12:00</span>
+                                        <div class="dropdown" :class="{'dropdown-active': index === activeDropdown}">
+                                            <p class="dropdown-item">Message info</p>
+                                            <p class="dropdown-item" 
+                                            @click.stop="deleteMsg(index)">
+                                                Delete message
+                                            </p>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
 
