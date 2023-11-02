@@ -176,9 +176,8 @@ createApp({
     methods: {
         
         addMessage(){
-        const chatTime = this.DateTime.now().toFormat('T');
-        let myDate = new Date()
-        const sendMsg = this.contacts[this.autoIndex].messages.push({
+        const chatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
+        this.contacts[this.autoIndex].messages.push({
             date: chatTime,
             message: this.typeMsg,
             status: 'sent',
@@ -187,18 +186,25 @@ createApp({
         this.typeMsg = '';
         
         setTimeout(() => {
+            const rcdChatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
             this.contacts[this.autoIndex].messages.push({
-                date: myDate.toLocaleTimeString(),
-                message: 'Ok',
+                date: rcdChatTime,
+                message: 'Ok va bene ciao',
                 status: 'received',
                 })
-            }, "1000");
+            }, 1000);
         },
 
+        // msgDate(msgDate){
+        //     const arrayChatTime = this.DateTime.now(msgDate).toFormat("dd/LL/yyyy HH:mm:ss");
+        //     // const timeChat = new Date(msgDate)
+        //     // console.log(typeof timeChat)
+        //     return arrayChatTime
+        // },
+
         isNamePresent(){
-            this.typeName.toLowerCase()
             this.contacts.forEach(element => {
-                if (element.name.toLowerCase().includes(this.typeName)) {
+                if (element.name.toLowerCase().includes(this.typeName.toLowerCase())) {
                     element.visible = true;
                 } else {
                     element.visible = false;
@@ -224,8 +230,7 @@ createApp({
                 return msg;
             } else {
                 msg = '';
-            }
-            
+            } 
         },
 
         chatTime(arrayMsgs){
