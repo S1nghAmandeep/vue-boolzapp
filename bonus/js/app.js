@@ -1,7 +1,7 @@
 const { createApp } = Vue;
 
 createApp({
-    data(){
+    data() {
         return {
             activeDropdown: '',
             autoIndex: 0,
@@ -73,7 +73,7 @@ createApp({
                             message: 'Ah scusa!',
                             status: 'received'
                         }
-                        ],
+                    ],
                 },
                 {
                     name: 'Alessandro B.',
@@ -92,7 +92,7 @@ createApp({
                         }
                     ],
                 },
-                    {
+                {
                     name: 'Alessandro L.',
                     avatar: './img/avatar_5.jpg',
                     visible: true,
@@ -174,35 +174,33 @@ createApp({
         }
     },
     methods: {
-        
-        addMessage(){
-        const chatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
-        this.contacts[this.autoIndex].messages.push({
-            date: chatTime,
-            message: this.typeMsg,
-            status: 'sent',
-        });
 
-        this.typeMsg = '';
-        
-        setTimeout(() => {
-            const rcdChatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
+        addMessage() {
+            const chatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
             this.contacts[this.autoIndex].messages.push({
-                date: rcdChatTime,
-                message: 'Ok va bene ciao',
-                status: 'received',
+                date: chatTime,
+                message: this.typeMsg,
+                status: 'sent',
+            });
+
+            this.typeMsg = '';
+
+            setTimeout(() => {
+                const rcdChatTime = this.DateTime.now().toFormat("dd/LL/yyyy HH:mm:ss");
+                this.contacts[this.autoIndex].messages.push({
+                    date: rcdChatTime,
+                    message: 'Ok va bene ciao',
+                    status: 'received',
                 })
             }, 1000);
         },
 
-        // msgDate(msgDate){
-        //     const arrayChatTime = this.DateTime.now(msgDate).toFormat("dd/LL/yyyy HH:mm:ss");
-        //     // const timeChat = new Date(msgDate)
-        //     // console.log(typeof timeChat)
-        //     return arrayChatTime
-        // },
+        msgDate(msgDate) {
+            const arrayChatTime = this.DateTime.fromFormat(msgDate, 'dd/mm/yyyy HH:mm:ss').toFormat("HH:mm:ss");
+            return arrayChatTime;
+        },
 
-        isNamePresent(){
+        isNamePresent() {
             this.contacts.forEach(element => {
                 if (element.name.toLowerCase().includes(this.typeName.toLowerCase())) {
                     element.visible = true;
@@ -212,36 +210,36 @@ createApp({
             });
         },
 
-        showDropdown(indexMsg){
+        showDropdown(indexMsg) {
             this.activeDropdown = indexMsg;
         },
 
-        deleteMsg(msgIndex){
+        deleteMsg(msgIndex) {
             this.contacts[this.autoIndex].messages.splice(msgIndex, 1);
             this.activeDropdown = '';
         },
 
-        lastMsg(arrayMsgs){
+        lastMsg(arrayMsgs) {
             let msg = '';
-            
-            if(arrayMsgs.length > 0) {
+
+            if (arrayMsgs.length > 0) {
                 const element = arrayMsgs.at(-1)
                 msg = element.message;
                 return msg;
             } else {
                 msg = '';
-            } 
+            }
         },
 
-        chatTime(arrayMsgs){
-            let chat  = '';
+        chatTime(arrayMsgs) {
+            let chat = '';
             arrayMsgs.forEach(element => {
                 chat = element.date;
             });
             return chat;
         },
 
-        activeChat(arrayContacts){
+        activeChat(arrayContacts) {
             let activeTime = '';
             arrayContacts.forEach(element => {
                 activeTime = element.date
@@ -250,7 +248,7 @@ createApp({
         }
 
     },
-    mounted(){
+    mounted() {
         console.log('ok')
     }
 }).mount('#app');
